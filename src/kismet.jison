@@ -4,8 +4,9 @@
 %lex
 
 %%
-\s+                   /* skip whitespace */
-[0-9]+("."[0-9]+)?\b  return 'NUMBER';
+\s+                   /* skip whitespace */;
+(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?\b
+                      return 'NUMBER';
 "*"                   return '*';
 "/"                   return '/';
 "-"                   return '-';
