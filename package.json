@@ -1,0 +1,33 @@
+{
+  "name": "kismet-js",
+  "version": "0.0.1",
+  "description": "Dice roller with (optional) personality",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autochthe/kismet.git"
+  },
+  "keywords": [
+    "js",
+    "parser",
+    "dice-roller"
+  ],
+  "author": "Mara Kim <mara@autochthe.net> (https://github.com/autochthe)",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/autochthe/kismet/issues"
+  },
+  "homepage": "https://github.com/autochthe/kismet",
+  "dependencies": {
+    "prompt": "^0.2.14"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.10",
+    "gulp-jison": "^1.0.0",
+    "gulp-mocha": "^2.0.0"
+  }
+}
