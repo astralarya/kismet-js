@@ -72,7 +72,7 @@ roll
         {$$ = Math.floor((Math.random() * Number($1)) + 1);}
     | expr die
         { $$ = 0;
-          for(i = 0; i < Number($1); i++) {
+          for(var i = 0; i < Number($1); i++) {
             $$ += Math.floor((Math.random() * Number($2)) + 1);
           }
         }
