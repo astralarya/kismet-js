@@ -5,8 +5,9 @@
 
 %%
 \s+                   /* skip whitespace */;
-(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?\b
-                      return 'NUMBER';
+(?:0|[1-9]\d*)        return 'INT';
+(?:\.\d+)             return 'FRAC';
+(?:[eE][+-]?\d+)      return 'EXP';
 "*"                   return '*';
 "/"                   return '/';
 "-"                   return '-';
@@ -53,10 +54,27 @@ expr
         {$$ = -$2;}
     | '(' expr ')'
         {$$ = $2;}
-    | NUMBER
-        {$$ = Number(yytext);}
+    | number
+        {$$ = $1;}
     | E
         {$$ = Math.E;}
     | PI
         {$$ = Math.PI;}
+;
+
+number
+    : INT
+        {$$ = Number($1);}
+    | FRAC
+        {$$ = Number($1);}
+    | EXP
+        {$$ = Number($1);}
+    | INT FRAC
+        {$$ = Number($1+$2);}
+    | INT EXP
+        {$$ = Number($1+$2);}
+    | FRAC EXP
+        {$$ = Number($1+$2);}
+    | INT FRAC EXP
+        {$$ = Number($1+$2+$3);}
 ;
