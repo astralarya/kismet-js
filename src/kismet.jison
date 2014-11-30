@@ -16,6 +16,7 @@
 "^"                   return '^';
 "("                   return '(';
 ")"                   return ')';
+"%"                   return '%';
 "PI"                  return 'PI';
 "E"                   return 'E';
 <<EOF>>               return 'EOF';
@@ -56,7 +57,7 @@ expr
         {$$ = -$2;}
     | '(' expr ')'
         {$$ = $2;}
-    | die
+    | roll
         {$$ = $1;}
     | number
         {$$ = $1;}
@@ -66,15 +67,22 @@ expr
         {$$ = Math.PI;}
 ;
 
-die
-    : 'd' INT
-        {$$ = Math.floor((Math.random() * Number($2)) + 1);}
-    | INT 'd' INT
+roll
+    : die
+        {$$ = Math.floor((Math.random() * Number($1)) + 1);}
+    | expr die
         { $$ = 0;
           for(i = 0; i < Number($1); i++) {
-            $$ += Math.floor((Math.random() * Number($3)) + 1);
+            $$ += Math.floor((Math.random() * Number($2)) + 1);
           }
         }
+;
+
+die
+    : 'd' expr
+        {$$ = $2}
+    | 'd' '%'
+        {$$ = 100;}
 ;
 
 number
