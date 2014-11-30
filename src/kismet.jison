@@ -34,6 +34,8 @@
 expressions
     : e EOF
         {return $1;}
+    | EOF /* empty */
+        {return null;}
 ;
 
 e

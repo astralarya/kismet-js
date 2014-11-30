@@ -1,8 +1,11 @@
-var should = require('chai').should(),
+var chai = require('chai'),
+    should = chai.should(),
+    expect = chai.expect,
     kismet = require('../index');
 
 describe('#parse', function() {
     it('ignores whitespace', function() {
+      expect(kismet.parse('')).to.be.null;
       kismet.parse('\t2  +\t\t 3').should.equal(5);
     });
     it('performs arithmetic', function() {

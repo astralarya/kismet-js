@@ -36,15 +36,15 @@ module.exports = {
             type: 'string',
             default: prev
           }}},
-        function(err, result) {
-          if(result.input !== 'quit') {
-            var result = kismet.parse(result.input)
+        function(err, input) {
+          if(input.input !== 'quit') {
+            var result = kismet.parse(input.input)
             if(callback) {
               callback(result);
             } else {
               console.log(result);
             }
-            loop(result.input);
+            loop(input.input);
           }
         });
     };
