@@ -5,8 +5,8 @@ var chai = require('chai'),
 
 describe('#parse', function() {
     it('ignores whitespace', function() {
-      kismet.parse('').should.deep.equal({formula: null, value: null});
-      kismet.parse('\t2  +\t\t 3').should.deep.equal({formula: '2+3', value: 5});
+      kismet.parse('').should.deep.equal({formula: null, breakdown: null, value: null});
+      kismet.parse('\t2  +\t\t 3').should.deep.equal({formula: '2+3', breakdown: null, value: 5});
     });
     it('performs arithmetic', function() {
       kismet.parse('2+2').value.should.equal(4);

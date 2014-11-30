@@ -49,7 +49,11 @@ module.exports = {
               callback(result);
             } else {
               if(result.formula != result.value) {
-                console.log('[' + result.formula + '] ' + result.value);
+                if(result.breakdown != result.formula) {
+                  console.log('[' + result.formula + ']: ' + result.breakdown + ' = ' + result.value);
+                } else {
+                  console.log('[' + result.formula + ']: ' + result.value);
+                }
               } else {
                 console.log(result.value);
               }
