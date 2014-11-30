@@ -21,11 +21,11 @@ describe('#parse', function() {
     });
     it('generates random numbers', function() {
       for(var i = 0; i < 100; i++) {
-        kismet.parse('d20').should.least(1).most(20);
-        kismet.parse('2d4').should.least(2).most(8);
-        kismet.parse('d%').should.least(1).most(100);
-        kismet.parse('(d6)d10').should.least(1).most(60);
-        kismet.parse('d8+4').should.least(5).most(12);
+        kismet.parse('d20').should.within(1,20);
+        kismet.parse('2d4').should.within(2,8);
+        kismet.parse('d%').should.within(1,100);
+        kismet.parse('(d6)d10').should.within(1,60);
+        kismet.parse('d8+4').should.within(5,12);
       }
     });
 });
