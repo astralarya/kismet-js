@@ -27,31 +27,31 @@
 %left '^'
 %left UMINUS
 
-%start expressions
+%start input
 
 %% /* language grammar */
 
-expressions
-    : e EOF
+input
+    : expr EOF
         {return $1;}
     | EOF /* empty */
         {return null;}
 ;
 
-e
-    : e '+' e
+expr
+    : expr '+' expr
         {$$ = $1+$3;}
-    | e '-' e
+    | expr '-' expr
         {$$ = $1-$3;}
-    | e '*' e
+    | expr '*' expr
         {$$ = $1*$3;}
-    | e '/' e
+    | expr '/' expr
         {$$ = $1/$3;}
-    | e '^' e
+    | expr '^' expr
         {$$ = Math.pow($1, $3);}
-    | '-' e %prec UMINUS
+    | '-' expr %prec UMINUS
         {$$ = -$2;}
-    | '(' e ')'
+    | '(' expr ')'
         {$$ = $2;}
     | NUMBER
         {$$ = Number(yytext);}
