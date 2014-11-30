@@ -8,6 +8,7 @@
 (?:0|[1-9]\d*)        return 'INT';
 (?:\.\d+)             return 'FRAC';
 (?:[eE][+-]?\d+)      return 'EXP';
+[dD]                  return 'd';
 "*"                   return '*';
 "/"                   return '/';
 "-"                   return '-';
@@ -26,6 +27,7 @@
 %left '+' '-'
 %left '*' '/'
 %left '^'
+%left 'd'
 %left UMINUS
 
 %start input
@@ -54,12 +56,25 @@ expr
         {$$ = -$2;}
     | '(' expr ')'
         {$$ = $2;}
+    | die
+        {$$ = $1;}
     | number
         {$$ = $1;}
     | E
         {$$ = Math.E;}
     | PI
         {$$ = Math.PI;}
+;
+
+die
+    : 'd' INT
+        {$$ = Math.floor((Math.random() * Number($2)) + 1);}
+    | INT 'd' INT
+        { $$ = 0;
+          for(i = 0; i < Number($1); i++) {
+            $$ += Math.floor((Math.random() * Number($3)) + 1);
+          }
+        }
 ;
 
 number
