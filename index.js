@@ -33,18 +33,28 @@ module.exports = {
         properties: {
           input: {
             description: '>>>',
-            type: 'string',
-            default: prev
+            type: 'string'
           }}},
         function(err, input) {
           if(input.input !== 'quit') {
-            var result = kismet.parse(input.input)
+            var result;
+            if(input.input) {
+              result = kismet.parse(input.input)
+            } else if(prev) {
+              result = kismet.parse(prev)
+            } else {
+              result = kismet.parse('')
+            }
             if(callback) {
               callback(result);
             } else {
-              console.log(result);
+              if(result.formula != result.value) {
+                console.log('[' + result.formula + '] ' + result.value);
+              } else {
+                console.log(result.value);
+              }
             }
-            loop(input.input);
+            loop(result.formula);
           }
         });
     };

@@ -39,65 +39,106 @@ input
     : expr EOF
         {return $1;}
     | EOF /* empty */
-        {return null;}
+        {return {formula: null, value: null};}
 ;
 
 expr
     : expr '+' expr
-        {$$ = $1+$3;}
+        { $$ = {
+            formula: $1.formula + '+' + $3.formula,
+            value: $1.value + $3.value}; }
     | expr '-' expr
-        {$$ = $1-$3;}
+        { $$ = {
+            formula: $1.formula + '-' + $3.formula,
+            value: $1.value - $3.value}; }
     | expr '*' expr
-        {$$ = $1*$3;}
+        { $$ = {
+            formula: $1.formula + '*' + $3.formula,
+            value: $1.value * $3.value}; }
     | expr '/' expr
-        {$$ = $1/$3;}
+        { $$ = {
+            formula: $1.formula + '/' + $3.formula,
+            value: $1.value / $3.value}; }
     | expr '^' expr
-        {$$ = Math.pow($1, $3);}
+        { $$ = {
+            formula: $1.formula + '^' + $3.formula,
+            value: Math.pow($1.value, $3.value)}; }
     | '-' expr %prec UMINUS
-        {$$ = -$2;}
+        { $$ = {
+            formula: '-' + $2.formula,
+            value: -$2.value}; }
     | '(' expr ')'
-        {$$ = $2;}
+        { $$ = {
+            formula: '(' + $2.formula + ')',
+            value: $2.value}; }
     | roll
-        {$$ = $1;}
+        { $$ = $1; }
     | number
-        {$$ = $1;}
+        { $$ = $1; }
     | E
-        {$$ = Math.E;}
+        { $$ = {
+            formula: 'E',
+            value: Math.E}; }
     | PI
-        {$$ = Math.PI;}
+        { $$ = {
+            formula: 'PI',
+            value: Math.PI}; }
 ;
 
 roll
     : die
-        {$$ = Math.floor((Math.random() * Number($1)) + 1);}
+        { $$ = {
+            formula: $1.formula,
+            value: Math.floor((Math.random() * $1.value) + 1)}; }
     | expr die
-        { $$ = 0;
-          for(var i = 0; i < Number($1); i++) {
-            $$ += Math.floor((Math.random() * Number($2)) + 1);
+        { var roll = 0;
+          for(var i = 0; i < $1.value; i++) {
+            roll += Math.floor((Math.random() * $2.value) + 1);
           }
+          $$ = {
+            formula: $1.formula + $2.formula,
+            value: roll};
         }
 ;
 
 die
     : 'd' expr
-        {$$ = $2}
+        { $$ = {
+            formula: 'd' + $2.formula,
+            value: $2.value}; }
     | 'd' '%'
-        {$$ = 100;}
+        { $$ = {
+            formula: 'd%',
+            value: 100}; }
 ;
 
 number
     : INT
-        {$$ = Number($1);}
+        { $$ = {
+            formula: $1,
+            value: Number($1)}; }
     | FRAC
-        {$$ = Number($1);}
+        { $$ = {
+            formula: $1,
+            value: Number($1)}; }
     | EXP
-        {$$ = Number($1);}
+        { $$ = {
+            formula: $1,
+            value: Number($1)}; }
     | INT FRAC
-        {$$ = Number($1+$2);}
+        { $$ = {
+            formula: $1+$2,
+            value: Number($1+$2)}; }
     | INT EXP
-        {$$ = Number($1+$2);}
+        { $$ = {
+            formula: $1+$2,
+            value: Number($1+$2)}; }
     | FRAC EXP
-        {$$ = Number($1+$2);}
+        { $$ = {
+            formula: $1+$2,
+            value: Number($1+$2)}; }
     | INT FRAC EXP
-        {$$ = Number($1+$2+$3);}
+        { $$ = {
+            formula: $1+$2+$3,
+            value: Number($1+$2+$3)}; }
 ;
