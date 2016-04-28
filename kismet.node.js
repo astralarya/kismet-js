@@ -1,10 +1,5 @@
-/* project settings */
-
-
-/* dependencies */
-
-var prompt = require('prompt'),
-    kismet = require('./dist/kismet').parser;
+var prompt = require('prompt');
+var kismet = require('./dist/kismet.js');
 
 prompt.message = '';
 prompt.delimiter = '';

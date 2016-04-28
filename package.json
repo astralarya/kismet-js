@@ -2,10 +2,7 @@
   "name": "kismet-js",
   "version": "0.0.1",
   "description": "Dice roller with (optional) personality",
-  "main": "index.js",
-  "scripts": {
-    "test": "gulp test"
-  },
+  "main": "kismet.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/autochthe/kismet.git"
@@ -16,15 +13,14 @@
     "dice-roller"
   ],
   "author": "Mara Kim <mara@autochthe.net> (https://github.com/autochthe)",
-  "license": "GPL",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/autochthe/kismet/issues"
   },
   "homepage": "https://github.com/autochthe/kismet",
-  "dependencies": {
-    "prompt": "^0.2.14"
-  },
   "devDependencies": {
-    "chai": "^1.10.0",
+    "jison": "^0.4.17",
+    "prompt": "^1.0.0",
+    "webpack": "^1.13.0"
   }
 }
