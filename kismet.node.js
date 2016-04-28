@@ -22,21 +22,11 @@ module.exports = {
    * Start an interactive session
    */
   prompt: function(callback) {
-    prompt.start();
-    function loop(prev) {
-      prompt.get({
-        properties: {
-          input: {
-            description: '>>>',
-            type: 'string'
-          }}},
-        function(err, input) {
+        var handler = function(err, input) {
           if(input.input !== 'quit') {
             var result;
             if(input.input) {
               result = kismet.parse(input.input)
-            } else if(prev) {
-              result = kismet.parse(prev)
             } else {
               result = kismet.parse('')
             }
@@ -53,9 +43,17 @@ module.exports = {
                 console.log(result.value);
               }
             }
-            loop(result.formula);
+			loop();
           }
-        });
+	  }
+    prompt.start();
+    function loop() {
+      prompt.get({
+        properties: {
+          input: {
+            description: '>>>',
+            type: 'string'
+          }}},handler);
     };
     loop();
   }
