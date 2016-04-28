@@ -20,7 +20,6 @@
   "homepage": "https://github.com/autochthe/kismet",
   "devDependencies": {
     "jison": "^0.4.17",
-    "prompt": "^1.0.0",
-    "webpack": "^1.13.0"
+    "prompt": "^1.0.0"
   }
 }
