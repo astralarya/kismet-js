@@ -2,6 +2,7 @@
 
 const readline = require('readline');
 const kismet = require('./kismet.jison');
+const personality = require('./personality.js');
 
 /* exports */
 
@@ -36,24 +37,26 @@ module.exports = {
 				rl.prompt()
 				return;
 			}
-			var result;
-			if(line) {
-				result = kismet.parse(line)
-			} else {
-				result = kismet.parse('')
-			}
-			if(callback) {
-				callback(result);
-			} else {
-				if(result.formula != result.value) {
-					if(result.breakdown != result.formula) {
-						console.log('[' + result.formula + ']: ' + result.breakdown + ' = ' + result.value);
-					} else {
-						console.log('[' + result.formula + ']: ' + result.value);
-					}
+			var comment = personality.analyze(line);
+			try {
+				var result = kismet.parse(line)
+				if(callback) {
+					callback(result);
 				} else {
-					console.log(result.value);
+					if(result.formula != result.value) {
+						if(result.breakdown != result.formula) {
+							console.log('[' + result.formula + ']: ' + result.breakdown + ' = ' + result.value);
+						} else {
+							console.log('[' + result.formula + ']: ' + result.value);
+						}
+					} else {
+						console.log(result.value);
+					}
 				}
+			} catch(err) {
+			}
+			if(comment) {
+				console.log(comment);
 			}
 			rl.prompt();
 		}).on("close", function() {
