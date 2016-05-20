@@ -56,6 +56,11 @@ module.exports = {
 				}}
 			},handler);
 		};
+		console.log(
+			"Greetings human! I am Kismet <3\n" +
+			"Input a roll and press ENTER.\n" +
+			"Exit with 'exit' or CTRL-D."
+		);
 		loop();
 	}
 };
