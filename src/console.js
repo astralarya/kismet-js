@@ -1,7 +1,7 @@
 "use strict";
 
-var readline = require('readline');
-var kismet = require('./kismet.jison');
+const readline = require('readline');
+const kismet = require('./kismet.jison');
 
 /* exports */
 
