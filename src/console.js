@@ -1,5 +1,5 @@
 var prompt = require('prompt');
-var kismet = require('./dist/kismet.js');
+var kismet = require('./kismet.jison');
 
 prompt.message = '';
 prompt.delimiter = '';

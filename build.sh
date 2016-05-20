@@ -1,3 +1,4 @@
 #!/bin/bash
 
-node_modules/.bin/jison src/kismet.jison -o dist/kismet.js
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+node_modules/.bin/webpack "$@"
