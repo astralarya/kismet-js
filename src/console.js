@@ -32,6 +32,9 @@ module.exports = {
 			if(line == "exit") {
 				rl.close();
 				return;
+			} else if (!line) {
+				rl.prompt()
+				return;
 			}
 			var result;
 			if(line) {
