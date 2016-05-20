@@ -11,7 +11,7 @@ Dice roller with (optional) personality
 
 Interactive prompt:
 
-    node index.js
+    ./kismet
 
 ## Dependencies
 
