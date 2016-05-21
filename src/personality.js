@@ -27,8 +27,8 @@ let responses = [
 	"*hiss*", "*kiss*", "*shudder*", "*cough*", "*sigh*", "*clap clap*", "*whistling*", "*humming*",
 	"Sup.", "Sup?", "hum", "hmmm", "uhh", "umm", "wtf", "wtf!", "wtf?", "WTF", "Urgh.", "bleh",
 	"xoxo", "asdf", "ababa", "42","Kismet","kismet", "KISMET", "KISMET!!", "0xkismet", "It's a KISMET!",
+	...emoji
 ];
-responses.push(...emoji.map((elem) => {return elem + " ";}));
 
 module.exports = {
 	analyze: function(input) {
