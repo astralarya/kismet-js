@@ -1,6 +1,22 @@
 import {jStat} from 'jStat';
 import emoji from './emoji.js';
 
+module.exports = {
+	analyze: function(input) {
+		let mentions = (input.match(/[Kk]+\s*[Ii]+\s*[Ss]+\s*[Mm]+\s*[Ee]+\s*[Tt]+/g)||[]).length;
+		let times = jStat.gamma.sample(1.8, mentions/3 * input.replace(/ /g,'').length/6);
+		let response = [];
+		for(let i = 0; i < times; i++) {
+			response.push(responses[Math.floor(jStat.uniform.sample(0,responses.length))]);
+		}
+		if(response) {
+			return response.join(" ");
+		} else {
+			return null;
+		}
+	}
+}
+
 let responses = [
 	"<3","<3","<3","<3","<3","<3","<3","<3","<3","<3","<3","<3",
 	"<3","<3","<3","<3","<3","<3","<3","<3","<3","<3","<3","<3",
@@ -67,19 +83,3 @@ let responses = [
 	"xoxo", "asdf", "ababa", "42","Kismet","kismet", "KISMET", "KISMET!!", "0xkismet", "It's a KISMET!",
 	...emoji
 ];
-
-module.exports = {
-	analyze: function(input) {
-		let mentions = (input.match(/[Kk]+\s*[Ii]+\s*[Ss]+\s*[Mm]+\s*[Ee]+\s*[Tt]+/g)||[]).length;
-		let times = jStat.gamma.sample(1.8, mentions/3 * input.replace(/ /g,'').length/6);
-		let response = [];
-		for(let i = 0; i < times; i++) {
-			response.push(responses[Math.floor(jStat.uniform.sample(0,responses.length))]);
-		}
-		if(response) {
-			return response.join(" ");
-		} else {
-			return null;
-		}
-	}
-}
