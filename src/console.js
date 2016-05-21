@@ -1,8 +1,8 @@
 "use strict";
 
-const readline = require('readline');
-const kismet = require('./kismet.jison');
-const personality = require('./personality.js');
+import readline from 'readline';
+import kismet from './kismet.jison';
+import personality from './personality.js';
 
 /* exports */
 

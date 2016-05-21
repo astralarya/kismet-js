@@ -3,17 +3,6 @@ var path = require('path');
 var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Backend node_modules
-var nodeModules = {};
-fs.readdirSync('node_modules')
-  .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1;
-  })
-  .forEach(function(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
-
-
 module.exports = {
 	context: __dirname + "/src",
 	target: "node",
@@ -31,7 +20,6 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				loaders: ['babel?cacheDirectory'],
-				include: path.resolve(__dirname, "./src")
 			},
 			{
 				test: /\.jison$/,
@@ -62,7 +50,6 @@ module.exports = {
 	plugins: [
 		new ExtractTextPlugin("kismet.[name].css"),
 	],
-	externals: nodeModules,
 };
 
 
