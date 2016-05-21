@@ -1,8 +1,7 @@
 "use strict";
 
 import readline from 'readline';
-import kismet from './kismet.jison';
-import personality from './personality.js';
+import kismet from './kismet.js';
 
 /* exports */
 
@@ -37,26 +36,24 @@ module.exports = {
 				rl.prompt()
 				return;
 			}
-			var comment = personality.analyze(line);
-			try {
-				var result = kismet.parse(line)
-				if(callback) {
-					callback(result);
-				} else {
-					if(result.formula != result.value) {
-						if(result.breakdown != result.formula) {
-							console.log('[' + result.formula + ']: ' + result.breakdown + ' = ' + result.value);
-						} else {
-							console.log('[' + result.formula + ']: ' + result.value);
-						}
+
+			let response = kismet.parse(line);
+			if(callback) {
+				callback(response.result);
+				return;
+			} else if (response.result) {
+				if(response.result.formula != response.result.value) {
+					if(response.result.breakdown != response.result.formula) {
+						console.log('[' + response.result.formula + ']: ' + response.result.breakdown + ' = ' + response.result.value);
 					} else {
-						console.log(result.value);
+						console.log('[' + response.result.formula + ']: ' + response.result.value);
 					}
+				} else {
+					console.log(response.result.value);
 				}
-			} catch(err) {
 			}
-			if(comment) {
-				console.log(comment);
+			if(response.comment) {
+				console.log(response.comment);
 			}
 			rl.prompt();
 		}).on("close", function() {
