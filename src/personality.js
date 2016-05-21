@@ -1,3 +1,5 @@
+"use strict";
+
 import {jStat} from 'jStat';
 import emoji from './emoji.js';
 
