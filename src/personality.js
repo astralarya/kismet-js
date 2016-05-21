@@ -71,7 +71,7 @@ let responses = [
 module.exports = {
 	analyze: function(input) {
 		let mentions = (input.match(/[Kk]+\s*[Ii]+\s*[Ss]+\s*[Mm]+\s*[Ee]+\s*[Tt]+/g)||[]).length;
-		let times = jStat.gamma.sample(1.8,mentions/3);
+		let times = jStat.gamma.sample(1.8, mentions/3 * input.replace(/ /g,'').length/6);
 		let response = [];
 		for(let i = 0; i < times; i++) {
 			response.push(responses[Math.floor(jStat.uniform.sample(0,responses.length))]);
