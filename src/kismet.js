@@ -1,6 +1,6 @@
 "use strict";
 
-import kismet from './kismet.jison';
+import parser from './parser.jison';
 import personality from './personality.js';
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
 		let response = {};
 		response.comment = personality.analyze(line);
 		try {
-			response.result = kismet.parse(line)
+			response.result = parser.parse(line)
 		} catch(err) {
 			response.error = err;
 		}
