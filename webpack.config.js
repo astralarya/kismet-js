@@ -26,6 +26,10 @@ module.exports = {
 				loader: '../loaders/jison-loader.js'
 			},
 			{
+				test: /jStat/,
+				loader: 'babel?cacheDirectory!imports?this=>module.exports'
+			},
+			{
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader")
 			},
