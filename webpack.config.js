@@ -30,8 +30,8 @@ module.exports = {
 				loader: 'babel?cacheDirectory!imports?this=>module.exports'
 			},
 			{
-				test: /\.css$/,
-				loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+				test: /\.s?css$/,
+				loader: ExtractTextPlugin.extract("css!sass")
 			},
 			{
 				test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
