@@ -3,17 +3,12 @@ var path = require('path');
 var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+config = {
 	context: __dirname + "/src",
-	target: "node",
-	entry: {
-		cli: './cli.js',
-	},
 	output: {
 		path: __dirname + '/dist',
 		filename: 'kismet.[name].js',
 		library: "Kismet",
-		libraryTarget: "commonjs2",
 	},
 	module: {
 		loaders: [
@@ -56,16 +51,33 @@ module.exports = {
 	],
 };
 
-
-var production_plugins = [
-	new webpack.DefinePlugin({
-		'process.env.NODE_ENV': '"production"'
-	}),
-	new webpack.optimize.UglifyJsPlugin(),
-	new webpack.optimize.OccurenceOrderPlugin(),
-	new webpack.optimize.DedupePlugin()
-];
-
 if(process.argv.indexOf('--debug') == -1) {
-	module.exports.plugins.push(...production_plugins)
+	config.plugins.push(
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': '"production"'
+		}),
+		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.DedupePlugin()
+	);
 }
+
+let cli_conf = Object.assign({},config, {
+	target: "node",
+	entry: {
+		cli: './cli.js'
+	},
+});
+cli_conf.output.libraryTarget = "commonjs2";
+
+let component_conf = Object.assign({},config, {
+	entry: {
+		component: './component.jsx',
+	},
+	node: {
+		fs: 'empty'
+	}
+});
+component_conf.output.libraryTarget = "var";
+
+module.exports = [ cli_conf, component_conf ];
