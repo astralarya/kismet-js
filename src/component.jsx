@@ -19,16 +19,16 @@ let KismetConsole = React.createClass({
 		} else if (response.result) {
 			if(response.result.formula != response.result.value) {
 				if(response.result.breakdown != response.result.formula) {
-					log += '[' + response.result.formula + ']: ' + response.result.breakdown + ' = ' + response.result.value;
+					log += '[' + response.result.formula + ']: ' + response.result.breakdown + ' = ' + response.result.value + '\n';
 				} else {
-					log += '[' + response.result.formula + ']: ' + response.result.value;
+					log += '[' + response.result.formula + ']: ' + response.result.value + '\n';
 				}
 			} else {
-				log += response.result.value;
+				log += response.result.value + '\n';
 			}
 		}
 		if(response.comment) {
-			log += response.comment;
+			log += response.comment + '\n';
 		}
 		this.setState({
 			log: this.state.log + log
