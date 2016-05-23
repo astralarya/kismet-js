@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env node
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"
-node index.js
+var Kismet = require('./dist/kismet.console.js');
+
+Kismet.prompt();

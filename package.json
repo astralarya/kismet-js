@@ -13,13 +13,13 @@
   "bugs": {
     "url": "https://github.com/autochthe/kismet/issues"
   },
-  "main": "index.js",
   "scripts": {
     "prepublish": "webpack",
     "start": "node index.js",
 	"build": "webpack",
 	"build:debug": "webpack --debug"
   },
+  "bin": "./kismet",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
