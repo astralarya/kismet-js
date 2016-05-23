@@ -1,6 +1,6 @@
 {
   "name": "kismet-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dice roll parser with (optional) personality",
   "homepage": "https://github.com/autochthe/kismet",
   "repository": "git+https://github.com/autochthe/kismet.git",
@@ -16,8 +16,8 @@
   "scripts": {
     "prepublish": "webpack",
     "start": "node index.js",
-	"build": "webpack",
-	"build:debug": "webpack --debug"
+    "build": "webpack",
+    "build:debug": "webpack --debug"
   },
   "bin": {
     "kismet": "./kismet"
