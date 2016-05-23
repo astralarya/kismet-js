@@ -1,14 +1,13 @@
 {
-  "name": "kismet-js",
+  "name": "kismet-parser",
   "version": "0.0.1",
-  "description": "Dice roller with (optional) personality",
-  "main": "kismet.js",
+  "description": "Dice roll parser with (optional) personality",
+  "homepage": "https://github.com/autochthe/kismet",
   "repository": {
     "type": "git",
     "url": "https://github.com/autochthe/kismet.git"
   },
   "keywords": [
-    "js",
     "parser",
     "dice-roller"
   ],
@@ -17,7 +16,13 @@
   "bugs": {
     "url": "https://github.com/autochthe/kismet/issues"
   },
-  "homepage": "https://github.com/autochthe/kismet",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "webpack",
+    "start": "node index.js",
+	"build": "webpack",
+	"build:debug": "webpack --debug"
+  },
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
