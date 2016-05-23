@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "description": "Dice roll parser with (optional) personality",
   "homepage": "https://github.com/autochthe/kismet",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/autochthe/kismet.git"
-  },
+  "repository": "git+https://github.com/autochthe/kismet.git",
   "keywords": [
     "parser",
     "dice-roller"
