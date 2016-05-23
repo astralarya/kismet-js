@@ -2,8 +2,8 @@
   "name": "kismet-parser",
   "version": "0.0.2",
   "description": "Dice roll parser with (optional) personality",
-  "homepage": "https://github.com/autochthe/kismet",
-  "repository": "git+https://github.com/autochthe/kismet.git",
+  "homepage": "https://github.com/autochthe/kismet-js",
+  "repository": "git+https://github.com/autochthe/kismet-js.git",
   "keywords": [
     "parser",
     "dice-roller"
@@ -11,7 +11,7 @@
   "author": "Mara Kim <mara@autochthe.net> (https://github.com/autochthe)",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/autochthe/kismet/issues"
+    "url": "https://github.com/autochthe/kismet-js/issues"
   },
   "scripts": {
     "prepublish": "webpack",
