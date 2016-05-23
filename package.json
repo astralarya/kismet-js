@@ -19,7 +19,9 @@
 	"build": "webpack",
 	"build:debug": "webpack --debug"
   },
-  "bin": "./kismet",
+  "bin": {
+    "kismet": "./kismet"
+  },
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
