@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-var Kismet = require('./dist/kismet.console.js');
+var Kismet = require('./dist/kismet.cli.js');
 
 Kismet.prompt();

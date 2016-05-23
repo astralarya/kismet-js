@@ -7,7 +7,7 @@ module.exports = {
 	context: __dirname + "/src",
 	target: "node",
 	entry: {
-		console: './console.js',
+		cli: './cli.js',
 	},
 	output: {
 		path: __dirname + '/dist',
