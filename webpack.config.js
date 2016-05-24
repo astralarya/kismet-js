@@ -67,8 +67,13 @@ let cli_conf = Object.assign({},config, {
 	entry: {
 		cli: './cli.js'
 	},
+	output: {
+		path: __dirname + '/dist',
+		filename: 'kismet.[name].js',
+		library: "Kismet",
+		libraryTarget: "commonjs2",
+	},
 });
-cli_conf.output.libraryTarget = "commonjs2";
 
 let component_conf = Object.assign({},config, {
 	entry: {
@@ -78,6 +83,5 @@ let component_conf = Object.assign({},config, {
 		fs: 'empty'
 	}
 });
-component_conf.output.libraryTarget = "var";
 
 module.exports = [ cli_conf, component_conf ];
