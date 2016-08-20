@@ -17,7 +17,8 @@
     "prepublish": "webpack",
     "start": "node index.js",
     "build": "webpack",
-    "build:debug": "webpack --debug"
+    "build:debug": "webpack --debug",
+	"test": "webpack"
   },
   "bin": {
     "kismet": "./kismet"
