@@ -18,7 +18,7 @@
     "start": "node index.js",
     "build": "webpack",
     "build:debug": "webpack --debug",
-	"test": "webpack"
+    "test": "webpack"
   },
   "bin": {
     "kismet": "./kismet"
